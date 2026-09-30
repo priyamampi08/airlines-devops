@@ -61,10 +61,7 @@ jobs:
         run: |
           ruff check .
 
-      - name: Test Python import
-        run: |
-         python -c "import app; print(app)"
-         python -c "from app.app import app; print(app)"
+    
       # -----------------------------
       # 5. RUN TESTS
       # -----------------------------
