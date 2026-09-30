@@ -1,4 +1,3 @@
-```yaml
 name: Airline CI-CD
 
 on:
@@ -132,4 +131,3 @@ jobs:
         run: |
           docker push \
             $REGISTRY/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
-```
