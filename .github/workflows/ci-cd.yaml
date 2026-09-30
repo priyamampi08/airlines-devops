@@ -94,11 +94,12 @@ jobs:
           ignore-unfixed: true
           severity: CRITICAL,HIGH
 
-      - name: Check GitHub repository
+      - name: Get GitHub repository information
         run: |
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Ref: $GITHUB_REF"
-          echo "Event: $GITHUB_EVENT_NAME"
+         echo "Repository: $GITHUB_REPOSITORY"
+         echo "Repository ID: ${{ github.repository_id }}"
+         echo "Repository owner ID: ${{ github.repository_owner_id }}"
+         echo "Ref: $GITHUB_REF"
       # -----------------------------
       # 8. CONFIGURE AWS
       # -----------------------------
