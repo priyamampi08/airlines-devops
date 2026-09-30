@@ -62,7 +62,7 @@ jobs:
           ruff check .
 
       - name: Check project structure
-          run: |
+           run:|
             pwd
             ls -la
            ls -la app
