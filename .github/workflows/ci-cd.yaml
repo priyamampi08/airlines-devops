@@ -61,12 +61,10 @@ jobs:
         run: |
           ruff check .
 
-      - name: Check project structure
+      - name: Test Python import
         run: |
-            pwd
-            ls -la
-            ls -la app
-            python -c "import sys; print(sys.path)"
+         python -c "import app; print(app)"
+         python -c "from app.app import app; print(app)"
       # -----------------------------
       # 5. RUN TESTS
       # -----------------------------
