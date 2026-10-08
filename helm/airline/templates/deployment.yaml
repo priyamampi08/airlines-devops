@@ -19,8 +19,10 @@ spec:
         app: airline
 
     spec:
+      imagePullSecrets:
+       - name: ecr-registry-secret
       serviceAccountName: airline-sa
-
+      
       containers:
         - name: airline
 
