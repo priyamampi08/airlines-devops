@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: airline-service
+  labels:
+    app: airline
+
+spec:
+  type: {{ .Values.service.type }}
+
+  selector:
+    app: airline
+
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}

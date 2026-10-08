@@ -1,0 +1,37 @@
+
+replicaCount: 2
+
+image:
+  repository: 354147111180.dkr.ecr.ap-south-1.amazonaws.com/airline-devops
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: true
+  className: nginx
+  host: airline.local
+
+config:
+  appEnv: test
+  appName: airline
+  logLevel: INFO
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 60
+

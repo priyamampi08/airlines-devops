@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: airline-app
+  labels:
+    app: airline
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: airline
+
+  template:
+    metadata:
+      labels:
+        app: airline
+
+    spec:
+      serviceAccountName: airline-sa
+
+      containers:
+        - name: airline
+
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          ports:
+            - containerPort: 5000
+
+          env:
+            - name: APP_ENV
+              value: {{ .Values.config.appEnv | quote }}
+
+            - name: APP_NAME
+              value: {{ .Values.config.appName | quote }}
+
+            - name: LOG_LEVEL
+              value: {{ .Values.config.logLevel | quote }}
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
