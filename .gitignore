@@ -76,3 +76,6 @@ dist/
 
 # Terraform lock file is safe and SHOULD be committed
 !.terraform.lock.hcl
+
+helm/airline/template/secrets.yaml
+
